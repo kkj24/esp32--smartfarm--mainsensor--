@@ -24,7 +24,7 @@ void WiFi_Task::beginTask() {
     xTaskCreatePinnedToCore(
         WiFiTask_handle,
         "WiFiTask_handle",
-        ,
+        8192,
         this,
         5,
         &WifiTask_handle,

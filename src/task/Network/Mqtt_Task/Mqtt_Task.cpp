@@ -22,7 +22,7 @@ void MQTT_Task::beginTask() {
         "Mqtt_HandleTask",
         8192,
         this,
-        5,
+        2,
         &MqttTask,
         0
     );

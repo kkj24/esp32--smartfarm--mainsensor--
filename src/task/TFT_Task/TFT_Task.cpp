@@ -202,36 +202,107 @@ void getIcon() {
 void tab1_content() {
     getIcon();
 
+    static uint16_t color1 = 0;
+    static uint16_t color2 = 0;
+    static uint16_t color3 = 0;
+    static uint16_t color4 = 0;
+    static uint16_t color5 = 0;
+    static uint16_t color6 = 0;
+    static uint16_t color7 = 0;
+    
+    if(data.vMois1 < 50 || data.vMois1 >= 75)
+        color1 = TFT_YELLOW;
+    else if(data.vMois1 < 35 || data.vMois1 >= 80)
+        color1 = TFT_ORANGE;
+    else if(data.vMois1 < 15 || data.vMois1 >= 95)
+        color1 = TFT_RED;
+    else if(data.vMois1 >= 50)
+        color1 = TFT_GREEN;
+    
+    if(data.vMois2 < 50 || data.vMois2 >= 75)
+        color2 = TFT_YELLOW;
+    else if(data.vMois2 < 35 || data.vMois2 >= 80)
+        color2 = TFT_ORANGE;
+    else if(data.vMois2 < 15 || data.vMois2 >= 95)
+        color2 = TFT_RED;
+    else if(data.vMois2 >= 50)
+        color2 = TFT_GREEN;
+    
+    if(data.vMois3 < 50 || data.vMois3 >= 75)
+        color3 = TFT_YELLOW;
+    else if(data.vMois3 < 35 || data.vMois3 >= 80)
+        color3 = TFT_ORANGE;
+    else if(data.vMois3 < 15 || data.vMois3 >= 95)
+        color3 = TFT_RED;
+    else if(data.vMois3 >= 50)
+        color3 = TFT_GREEN;
+    
+    if(data.vMois4 < 50 || data.vMois4 >= 75)
+        color4 = TFT_YELLOW;
+    else if(data.vMois4 < 35 || data.vMois4 >= 80)
+        color4 = TFT_ORANGE;
+    else if(data.vMois4 < 15 || data.vMois4 >= 95)
+        color4 = TFT_RED;
+    else if(data.vMois4 >= 50)
+        color4 = TFT_GREEN;
+    
+    if(data.vMoisAv < 50 || data.vMoisAv >= 75)
+        color5 = TFT_YELLOW;
+    else if(data.vMoisAv < 35 || data.vMoisAv >= 80)
+        color5 = TFT_ORANGE;
+    else if(data.vMoisAv < 15 || data.vMoisAv >= 95)
+        color5 = TFT_RED;
+    else if(data.vMoisAv >= 50)
+        color5 = TFT_GREEN;
+    
+    if(data.vHum < 50 || data.vHum >= 75)
+        color6 = TFT_YELLOW;
+    else if(data.vHum < 35 || data.vHum >= 80)
+        color6 = TFT_ORANGE;
+    else if(data.vHum < 15 || data.vHum >= 95)
+        color6 = TFT_RED;
+    else if(data.vHum >= 50)
+        color6 = TFT_GREEN;
+
+    if(data.vTemp < 50 || data.vTemp >= 75)
+        color7 = TFT_YELLOW;
+    else if(data.vTemp < 35 || data.vTemp >= 80)
+        color7 = TFT_ORANGE;
+    else if(data.vTemp < 15 || data.vTemp >= 95)
+        color7 = TFT_RED;
+    else if(data.vTemp >= 50)
+            color7 = TFT_GREEN;
+
     // Left
     // TFT Bar Mois1
     myTFT.printF(F("Mois1"), 2, 60, TFT_CYAN);
-    myTFT.soft_pBar(0, data.vMois1, 2, 68, 60, 5, TFT_WHITE);
+    myTFT.soft_pBar(0, data.vMois1, 2, 68, 60, 5, TFT_WHITE, color1);
     
     // TFT Bar Mois2
     myTFT.printF(F("Mois2"), 2, 60 + (8 * 2), TFT_CYAN);
-    myTFT.soft_pBar(1, data.vMois2, 2, 68 + (8 * 2), 60, 5, TFT_WHITE);
+    myTFT.soft_pBar(1, data.vMois2, 2, 68 + (8 * 2), 60, 5, TFT_WHITE, color2);
     
     // TFT Bar Mois3
     myTFT.printF(F("Mois3"), 2, 60 + (8 * 4), TFT_CYAN);
-    myTFT.soft_pBar(2, data.vMois3, 2, 68 + (8 * 4), 60, 5, TFT_WHITE);
+    myTFT.soft_pBar(2, data.vMois3, 2, 68 + (8 * 4), 60, 5, TFT_WHITE, color3);
 
     // Right
     // TFT Bar Mois4
     myTFT.printF(F("Mois4"), 64, 60, TFT_CYAN);
-    myTFT.soft_pBar(3, data.vMois4, 64, 68, 64, 5, TFT_WHITE);
+    myTFT.soft_pBar(3, data.vMois4, 64, 68, 64, 5, TFT_WHITE, color4);
     
     // TFT Bar Hum
     myTFT.printF(F("Hum"), 64, 60 + (8 * 2), TFT_CYAN);
-    myTFT.soft_pBar(5, data.vHum, 64, 68 + (8 * 2), 64, 5, TFT_WHITE);
+    myTFT.soft_pBar(5, data.vHum, 64, 68 + (8 * 2), 64, 5, TFT_WHITE, color6);
     
     // TFT Bar Temp
     myTFT.printF(F("Temp"), 64, 60 + (8 * 4), TFT_CYAN);
-    myTFT.soft_pBar(6, data.vTemp, 64, 68 + (8 * 4), 64, 5, TFT_WHITE);
+    myTFT.soft_pBar(6, data.vTemp, 64, 68 + (8 * 4), 64, 5, TFT_WHITE, color7);
     
     // Center
     // TFT Bar Temp
     myTFT.printF(F("Mois Av"), 2, 60 + (8 * 6), TFT_CYAN);
-    myTFT.soft_pBar(7, data.vMoisAv, 2, 68 + (8 * 6), 126, 5, TFT_WHITE);
+    myTFT.soft_pBar(7, data.vMoisAv, 2, 68 + (8 * 6), 126, 5, TFT_WHITE, color7);
 }
 
 // TAB2 Content || Raw Data Dashboard
