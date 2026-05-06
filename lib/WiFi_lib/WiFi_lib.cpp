@@ -128,10 +128,10 @@ void WiFi_lib::autoRec(bool OnlineMode, bool OfflineMode) {
 ——————————————————————————————————————————————————————————————————————————————————————————————
 */
 void WiFi_lib::setupWiFi() {
-    esp_wifi_set_channel(1, WIFI_SECOND_CHAN_NONE); // Set All Channel to CH1
     WiFi.setHostname(HostName);                     // Configure HostName WiFi
     WiFi.mode(WIFI_AP_STA);                         // Set WiFi Mode [Dual Mode]
     WiFi.softAP(AP_ssid, AP_pass);                  // Set AP mode Config
+    esp_wifi_set_channel(1, WIFI_SECOND_CHAN_NONE); // Set All Channel to CH1
     
     
     //                              Set Auto Connect
